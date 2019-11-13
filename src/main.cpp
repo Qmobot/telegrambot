@@ -11,6 +11,7 @@ void vars();
 void calc();
 void chat();
 int minusSum();
+void sumit();
 
 // Настройка чипа
 void setup(){
@@ -20,8 +21,9 @@ void setup(){
       /* Нужно ли подключение по последовательному порту? - Да */true
         );
     // vars();
-    calc();
-    chat();
+    // calc();
+    // chat();
+    sumit();
 }
 
 // Данная часть кода будет выпонятся постоянно в цикле
@@ -242,7 +244,11 @@ void calc(){
     Serial.println("pp > 10!!!");
   }else{
     Serial.println("pp <= 10!!!");
+  if(true){
+
   }
+  }
+  
 
   // Можно создавать многоуровневые условия:
   int qq = 6;
@@ -307,6 +313,26 @@ int minusSum(int n){
   }else{
     return 0;
   }
+}
+
+
+int minusSumClone(int n, int player){
+  Serial.print("I am player ");
+  Serial.println(player);
+  if(n>0){
+    n = n - 1 + minusSumClone(n-1, player + 1);
+  }else{
+    n =  0;
+  }
+  Serial.print(player);
+  Serial.print(" returns ");
+  Serial.println(n);
+  return n;
+}
+
+void sumit(){
+  int player = 0;
+  int summ = minusSumClone(6, player);
 }
 
 void chat(){
