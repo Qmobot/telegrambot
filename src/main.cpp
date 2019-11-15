@@ -9,9 +9,6 @@
 // Декларируем все функции, чтобы программа знала, что такие функции есть
 void vars();
 void calc();
-void chat();
-int minusSum();
-void sumit();
 
 // Настройка чипа
 void setup(){
@@ -298,65 +295,3 @@ void calc(){
   Serial.println();
 
 }
-
-// Создаем функцию чата:
-// Qchip умеет не только писать что-то в вывод последовательного порта,
-// но может и считывать оттуда, то есть мы можем написать некий чат.
-
-// Рекурсивная функция, которая возращает сумму обратной прогрессии до нуля
-// minusSum(5) = 4 + 3 + 2 + 1 + 0 = 10
-
-int minusSum(int n){
-  if(n>0){
-    n = n - 1 + minusSum(n-1);
-    return n;
-  }else{
-    return 0;
-  }
-}
-
-
-int minusSumClone(int n, int player){
-  Serial.print("I am player ");
-  Serial.println(player);
-  if(n>0){
-    n = n - 1 + minusSumClone(n-1, player + 1);
-  }else{
-    n =  0;
-  }
-  Serial.print(player);
-  Serial.print(" returns ");
-  Serial.println(n);
-  return n;
-}
-
-void sumit(){
-  int player = 0;
-  int summ = minusSumClone(6, player);
-}
-
-void chat(){
-
-  Serial.println();
-  Serial.println("Функция обратной прогрессии: ");
-  Serial.println();
-
-  Serial.print("Рекурсия до 5: ");
-  Serial.println(minusSum(5));
-
-  while(true){
-    Serial.print("Введите число: ");
-    String value;
-    while(Serial.available() ==0) {}
-    while(Serial.available()){
-      value = Serial.readString();
-      Serial.print("Рекурсия до ");
-      int ba = value.toInt();
-      Serial.print(ba);
-      Serial.print(": ");
-      
-      Serial.println(minusSum(ba));
-    }
-  }
-}
-
