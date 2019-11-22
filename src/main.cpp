@@ -5,7 +5,7 @@
 #include "UniversalTelegramBot.h"
 
 // Initialize Wifi connection to the router
-char ssid[] = "XXXXXXXXX";     // your network SSID (name)
+char ssid[] = "XXXXXXXXXXX";     // your network SSID (name)
 char password[] = "XXXXXXXXX"; // your network key
 
 // Initialize Telegram BOT
